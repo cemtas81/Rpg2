@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1101946297195155554
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1101946297195155564}
+  - component: {fileID: 1376892019}
+  - component: {fileID: 4575854486818459454}
+  m_Layer: 0
+  m_Name: Enemies
+  m_TagString: Nemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1101946297195155564
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101946297195155554}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1376892019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101946297195155554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0ee1c17ac26f734f86c978c1975a617, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agents: []
+  player: {fileID: 0}
+  myPlayer: {fileID: 0}
+  Parent: {fileID: 4575854486818459454}
+--- !u!114 &4575854486818459454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101946297195155554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e5ae54b36cdf0e46baeff438e886888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabs:
+  - {fileID: 8991649977978731444, guid: d66fe89ed07e7054385c087f0d621725, type: 3}
+  - {fileID: 8991649977978731444, guid: fa4ab2cccb511324ca2792a67cf74da2, type: 3}
+  desiredCircleRadius: 30
+  minSpawnCount: 5
+  maxSpawnCount: 10
+  maxActivePrefabs: 88
+  movableObject: {fileID: 0}
+  nadide: 0.8
+  spawnedPrefabs: []
+  spawnInterval: 1
+  objectPool: {fileID: 0}
