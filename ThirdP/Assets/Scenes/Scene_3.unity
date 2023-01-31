@@ -1999,9 +1999,9 @@ MonoBehaviour:
   enableRotation: 1
   autoRepath:
     mode: 1
-    interval: 0.5
+    period: 0.5
     sensitivity: 10
-    maximumInterval: 2
+    maximumPeriod: 2
     visualizeSensitivity: 0
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
@@ -2881,7 +2881,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 791502835}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eed202c884a45114bad80b7921801415, type: 3}
   m_Name: 
@@ -2890,6 +2890,7 @@ MonoBehaviour:
   player: {fileID: 1683722356}
   myPlayer: {fileID: 1683722358}
   Parent: {fileID: 0}
+  allocator: 4
 --- !u!1 &1443136259 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1662837858102748, guid: c7f16756cd602174f9e5c60d3ce995f9,
@@ -3736,6 +3737,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: character (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 217afaff7509cd74283746da9944599d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 217afaff7509cd74283746da9944599d,
         type: 3}

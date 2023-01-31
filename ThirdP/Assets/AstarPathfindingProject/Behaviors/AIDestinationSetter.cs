@@ -12,12 +12,19 @@ namespace Pathfinding {
 	/// [Open online documentation to see images]
 	/// </summary>
 	[UniqueComponent(tag = "ai.destination")]
-	[HelpURL("http://arongranberg.com/astar/docs/class_pathfinding_1_1_a_i_destination_setter.php")]
+	[HelpURL("http://arongranberg.com/astar/documentation/stable/class_pathfinding_1_1_a_i_destination_setter.php")]
 	public class AIDestinationSetter : VersionedMonoBehaviour {
 		/// <summary>The object that the AI should move to</summary>
 		public Transform target;
 		IAstarAI ai;
-		
+		void Start()
+		{
+			if (target==null)
+			{
+                target = GameObject.FindWithTag("Player").transform;
+            }
+			
+		}
 		void OnEnable () {
 			ai = GetComponent<IAstarAI>();
 			// Update the destination right before searching for a path as well.
@@ -25,13 +32,6 @@ namespace Pathfinding {
 			// frame as the destination is used for debugging and may be used for other things by other
 			// scripts as well. So it makes sense that it is up to date every frame.
 			if (ai != null) ai.onSearchPath += Update;
-            if (target==null)
-            {
-				target = GameObject.FindWithTag("Player").GetComponent<Transform>();
-				
-			}
-           
-            
 		}
 
 		void OnDisable () {
