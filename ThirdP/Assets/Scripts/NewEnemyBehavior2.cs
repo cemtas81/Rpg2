@@ -29,8 +29,8 @@ public class NewEnemyBehavior2 : MonoBehaviour
         }
 
         NavMeshAgentUpdateJob job = new NavMeshAgentUpdateJob();
-        //job.agentsIndices = nativeAgentsIndices;
-        //job.agentsList = agents;
+        job.agentsIndices = nativeAgentsIndices;
+        job.agentsList = agents;
         job.player = player;
         job.myPlayer = myPlayer;
         jobHandle = job.Schedule(nativeAgentsIndices.Length, 32);
@@ -51,7 +51,10 @@ public class NewEnemyBehavior2 : MonoBehaviour
     public NavMeshAgent[] agents;
     public GameObject player;
     public MyPlayer myPlayer;
-    public void Execute(int index)
+        internal NativeArray<int> agentsIndices;
+        internal List<NavMeshAgent> agentsList;
+
+        public void Execute(int index)
     {
         NavMeshAgent agent = agents[index];
         if ((player.transform.position - agents[index].transform.position).sqrMagnitude < Mathf.Pow(agents[index].stoppingDistance, 1f) && !myPlayer.invisible)

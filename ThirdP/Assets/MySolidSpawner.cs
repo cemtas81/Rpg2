@@ -54,17 +54,23 @@ public class MySolidSpawner : MonoBehaviour
     }
     public void Spawn2()
     {
-        // Choose the first prefab more often and the second prefab less often
+        // Choose the first prefab more often, the second prefab less often, and the third prefab even less often
         GameObject prefab;
-        if (Random.value <= nadide)
+        float randomValue = Random.value;
+        if (randomValue <= 0.75f)
         {
             prefab = prefabs[0];  // the first prefab has a higher chance of spawning 
         }
-        else
+        else if (randomValue <= 0.95f)
         {
             prefab = prefabs[1];  // the second prefab has a lower chance of spawning
         }
-        if (spawnedPrefabs.Count >= maxActivePrefabs )
+        else
+        {
+            prefab = prefabs[2];  // the third prefab has an even lower chance of spawning
+        }
+
+        if (spawnedPrefabs.Count >= maxActivePrefabs)
         {
             return;
         }
@@ -74,24 +80,24 @@ public class MySolidSpawner : MonoBehaviour
         {
             return;
         }
-     
+
         // Generate a random position within the desired circle radius around the movable object
         float angle = Random.Range(0f, 360f);
         float x = movableObject.transform.position.x + desiredCircleRadius * Mathf.Cos(angle);
         float y = movableObject.transform.position.y;
         float z = movableObject.transform.position.z + desiredCircleRadius * Mathf.Sin(angle);
-        Vector3 position = new(x, y, z);
+        Vector3 position = new Vector3(x, y, z);
 
         // Set the position and rotation of the prefab
         prefabToSpawn.transform.position = position;
         prefabToSpawn.transform.rotation = Quaternion.identity;
         //prefabToSpawn.transform.parent = transform;
         // Enable the prefab
-        prefabToSpawn.SetActive(true);     
+        prefabToSpawn.SetActive(true);
         // Add the prefab to the list of spawned prefabs
         spawnedPrefabs.Add(prefabToSpawn);
-        
     }
+
 }
 
 

@@ -28,7 +28,12 @@ public class NewEnemyBehavior : MonoBehaviour
         }
         foreach (var agent in agents)
         {
-            if ((player.transform.position - agent.Key.transform.position).magnitude < agent.Key.stoppingDistance && !myPlayer.invisible)
+            animator = agent.Key.GetComponentInChildren<AnimatedMesh>();
+            if (animator == null)
+            {
+                animator = agent.Key.GetComponentInChildren<Animator>();
+            }
+            if ((player.transform.position - agent.Key.transform.position).magnitude < agent.Key.stoppingDistance && !myPlayer.invisible&&animator is AnimatedMesh)
             {
                 agent.Key.transform.LookAt(new Vector3(target.x, agent.Key.transform.position.y, target.z));
                 agent.Key.enabled = false;
@@ -44,11 +49,7 @@ public class NewEnemyBehavior : MonoBehaviour
             }
             if (agent.Key.isOnNavMesh && agent.Key.enabled)
             {
-                animator = agent.Key.GetComponentInChildren<AnimatedMesh>();
-                if (animator == null)
-                {
-                    animator = agent.Key.GetComponentInChildren<Animator>();
-                }
+              
                 if (animator != null)
                 {
                     if (!myPlayer.invisible)

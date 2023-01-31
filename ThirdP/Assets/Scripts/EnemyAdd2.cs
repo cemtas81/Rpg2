@@ -9,7 +9,7 @@ public class EnemyAdd2 : MonoBehaviour
     [SerializeField]
     private NewEnemyBehavior enemyB;
     //[SerializeField]
-    //private NewEnemyBehavior2 enemyB;   
+    //private NewEnemyBehavior2 enemyB;
     [SerializeField]
     private NavMeshAgent agentA;
     [SerializeField]
@@ -30,7 +30,7 @@ public class EnemyAdd2 : MonoBehaviour
     {
 
         enemyB = FindObjectOfType<NewEnemyBehavior>();
-        //enemyB = FindObjectOfType<NewEnemyBehavior2>();      
+        //enemyB = FindObjectOfType<NewEnemyBehavior2>();
         if (GetComponentInChildren<Animator>() != null)
         {
             animator2 = GetComponentInChildren<Animator>();
@@ -44,6 +44,7 @@ public class EnemyAdd2 : MonoBehaviour
         Parent=FindObjectOfType<MySolidSpawner>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         //agentA.updateRotation = false;
+        NavMesh.avoidancePredictionTime = 0.1f;
     }
     private void OnEnable()
     {

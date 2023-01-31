@@ -2442,13 +2442,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pools:
+  - prefab: {fileID: 8991649977978731444, guid: ac894bc353274d545860afc612808cdb,
+      type: 3}
+    initialPoolSize: 75
+    pooledObjects: []
   - prefab: {fileID: 8991649977978731444, guid: d66fe89ed07e7054385c087f0d621725,
       type: 3}
-    initialPoolSize: 80
+    initialPoolSize: 20
     pooledObjects: []
   - prefab: {fileID: 8991649977978731444, guid: fa4ab2cccb511324ca2792a67cf74da2,
       type: 3}
-    initialPoolSize: 20
+    initialPoolSize: 5
     pooledObjects: []
 --- !u!4 &1082424201
 Transform:
@@ -2885,7 +2889,7 @@ MonoBehaviour:
   agents: []
   player: {fileID: 1683722356}
   myPlayer: {fileID: 1683722358}
-  Parent: {fileID: 1427983589}
+  Parent: {fileID: 0}
 --- !u!1 &1443136259 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1662837858102748, guid: c7f16756cd602174f9e5c60d3ce995f9,
@@ -4666,8 +4670,31 @@ PrefabInstance:
     - target: {fileID: 4575854486818459454, guid: 64024bdf7d74028458f194f9d86ebbff,
         type: 3}
       propertyPath: maxActivePrefabs
-      value: 99
+      value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 4575854486818459454, guid: 64024bdf7d74028458f194f9d86ebbff,
+        type: 3}
+      propertyPath: prefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4575854486818459454, guid: 64024bdf7d74028458f194f9d86ebbff,
+        type: 3}
+      propertyPath: prefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 8991649977978731444, guid: ac894bc353274d545860afc612808cdb,
+        type: 3}
+    - target: {fileID: 4575854486818459454, guid: 64024bdf7d74028458f194f9d86ebbff,
+        type: 3}
+      propertyPath: prefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 8991649977978731444, guid: d66fe89ed07e7054385c087f0d621725,
+        type: 3}
+    - target: {fileID: 4575854486818459454, guid: 64024bdf7d74028458f194f9d86ebbff,
+        type: 3}
+      propertyPath: prefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 8991649977978731444, guid: fa4ab2cccb511324ca2792a67cf74da2,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64024bdf7d74028458f194f9d86ebbff, type: 3}
 --- !u!1 &2114283753834967212
