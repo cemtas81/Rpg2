@@ -86,18 +86,27 @@ public class MySolidSpawner : MonoBehaviour
         float x = movableObject.transform.position.x + desiredCircleRadius * Mathf.Cos(angle);
         float y = movableObject.transform.position.y;
         float z = movableObject.transform.position.z + desiredCircleRadius * Mathf.Sin(angle);
-        Vector3 position = new Vector3(x, y, z);
+        Vector3 position = new(x, y, z);
 
         // Set the position and rotation of the prefab
-        prefabToSpawn.transform.position = position;
-        prefabToSpawn.transform.rotation = Quaternion.identity;
+        prefabToSpawn.transform.SetPositionAndRotation(position, Quaternion.identity);
         //prefabToSpawn.transform.parent = transform;
         // Enable the prefab
         prefabToSpawn.SetActive(true);
         // Add the prefab to the list of spawned prefabs
         spawnedPrefabs.Add(prefabToSpawn);
     }
-
+    public void Spawn3(Vector3 pos)
+    {
+        GameObject prefab ;
+        prefab = prefabs[3];
+        GameObject prefabToSpawn = objectPool.GetPooledObject(prefab);
+        prefabToSpawn.transform.SetPositionAndRotation(pos, Quaternion.identity);
+        // Enable the prefab
+        prefabToSpawn.SetActive(true);
+        // Add the prefab to the list of spawned prefabs
+        //spawnedPrefabs.Add(prefabToSpawn);
+    }
 }
 
 

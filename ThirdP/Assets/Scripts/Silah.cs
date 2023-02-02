@@ -14,7 +14,7 @@ public class Silah : MonoBehaviour
     {
         if (canHit)
         {
-            coll.enabled = false;
+            //coll.enabled = false;
             StartCoroutine(Hitto());
             canHit = false;
            

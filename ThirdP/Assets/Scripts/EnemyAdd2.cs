@@ -60,7 +60,8 @@ public class EnemyAdd2 : MonoBehaviour
             {
                 agentA.enabled = true;
 
-            enemyB.agents.Add(agentA,agentO);
+            enemyB.agents.Add(agentA, agentO);
+            //enemyB.AddAgent(agentA);
  
             if (agentA.isOnNavMesh == true)
                 {
@@ -81,6 +82,7 @@ public class EnemyAdd2 : MonoBehaviour
                 agentA.velocity = Vector3.zero;
             }
             enemyB.agents.Remove(agentA);
+            //enemyB.RemoveAgent(agentA);
             //Parent.ReturnToPool(this.gameObject);
             Parent.spawnedPrefabs.Remove(this.gameObject);
             this.gameObject.SetActive(false);
@@ -139,15 +141,17 @@ public class EnemyAdd2 : MonoBehaviour
         agentA.enabled = false;
         agentO.enabled = false;
         enemyB.agents.Remove(agentA);
-       
+        //enemyB.RemoveAgent(agentA);
         StartCoroutine(Dying());
-        Parent.spawnedPrefabs.Remove(this.gameObject);
+        
     }
     IEnumerator Dying()
     {
         yield return new WaitForSeconds(2.6f);
         //Parent.ReturnToPool(this.gameObject);
         this.gameObject.SetActive(false);
+        Parent.spawnedPrefabs.Remove(this.gameObject);
+        Parent.Spawn3(transform.position);
     }
     void DamageN(float value, string st)
     {

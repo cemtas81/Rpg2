@@ -7,7 +7,7 @@ namespace Pathfinding.Examples {
 	[HelpURL("http://arongranberg.com/astar/docs/class_pathfinding_1_1_examples_1_1_procedural_world.php")]
 	public class ProceduralWorld : MonoBehaviour {
 		public Transform target;
-
+		
 		public ProceduralPrefab[] prefabs;
 
 		/// <summary>How far away to generate tiles</summary>
@@ -82,7 +82,11 @@ namespace Pathfinding.Examples {
 			// Calculate the closest tiles
 			// and then recalculate the graph
 			Update();
-			AstarPath.active.Scan();
+			if (AstarPath.active!=null)
+			{
+                AstarPath.active.Scan();
+            }
+			
 
 			StartCoroutine(GenerateTiles());
 		}
@@ -150,8 +154,8 @@ namespace Pathfinding.Examples {
 			System.Random rnd;
 
 			ProceduralWorld world;
-
-			public bool destroyed { get; private set; }
+           
+            public bool destroyed { get; private set; }
 
 			public ProceduralTile (ProceduralWorld world, int x, int z) {
 				this.x = x;
@@ -166,7 +170,8 @@ namespace Pathfinding.Examples {
 			public IEnumerator Generate () {
 				ie = InternalGenerate();
 				GameObject rt = new GameObject("Tile " + x + " " + z);
-				root = rt.transform;
+                rt.transform.parent = GameObject.FindWithTag("Respawn").transform;
+                root = rt.transform;				
 				while (ie != null && root != null && ie.MoveNext()) yield return ie.Current;
 				ie = null;
 			}

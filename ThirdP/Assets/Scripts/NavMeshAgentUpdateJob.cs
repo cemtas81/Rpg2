@@ -3,11 +3,12 @@ using Unity.Collections;
 using Unity.Jobs;
 using UnityEngine;
 using UnityEngine.AI;
-
+using UnityEngine.PlayerLoop;
+using Unity.Burst;
 public struct NavMeshAgentUpdateJob : IJobParallelFor
 {
-    public NavMeshAgent agent;
-    public NavMeshObstacle obstacle;
+    public NavMeshAgent[] agents;
+    public NavMeshObstacle[] obstacles;
     public GameObject player;
     public MyPlayer myPlayer;
     public Component animator;
@@ -16,9 +17,13 @@ public struct NavMeshAgentUpdateJob : IJobParallelFor
     public float timer;
     public float rotationSpeed;
 
+    
     public void Execute(int index)
     {
-        timer -= Time.deltaTime;
+        NavMeshAgent agent = agents[index];
+        NavMeshObstacle obstacle = obstacles[index];
+       
+    timer -= Time.deltaTime;
         if (timer <= 0)
         {
             target = player.transform.position;
@@ -73,6 +78,7 @@ public struct NavMeshAgentUpdateJob : IJobParallelFor
                     animatorAnim.SetTrigger("Attack");
                     animatorAnim.SetFloat("MotionSpeed", 0);
                     agent.isStopped = true;
+
                     agent.velocity = Vector3.zero;
                 }
                 if (myPlayer.dead)
@@ -95,5 +101,6 @@ public struct NavMeshAgentUpdateJob : IJobParallelFor
             }
         }
     }
+    
 }
 
