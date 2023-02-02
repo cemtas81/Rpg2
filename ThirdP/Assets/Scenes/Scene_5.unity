@@ -1156,7 +1156,7 @@ MonoBehaviour:
     random: 0.2
     randomRotation: 1
     singleFixed: 0
-  - prefab: {fileID: 8523841885379676730, guid: b0616ef5fd891c34faf1be701ebe7471,
+  - prefab: {fileID: 8523841885379676730, guid: 1a20d9b78a78f8a4a907acaa264fd0d8,
       type: 3}
     density: 0.01
     perlin: 1

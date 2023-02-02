@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using Unity.Entities;
-
+using DG.Tweening;
 public class MySolidSpawner : MonoBehaviour
 {
     // The prefabs to spawn
@@ -104,9 +104,10 @@ public class MySolidSpawner : MonoBehaviour
         prefabToSpawn.transform.SetPositionAndRotation(pos, Quaternion.identity);
         // Enable the prefab
         prefabToSpawn.SetActive(true);
-        StartCoroutine(SmoothMove(prefabToSpawn, movableObject.transform.position, 0.25f));
+        //StartCoroutine(SmoothMove(prefabToSpawn, movableObject.transform.position, 0.25f));
         // Add the prefab to the list of spawned prefabs
         //spawnedPrefabs.Add(prefabToSpawn);
+        prefabToSpawn.transform.DOMove(movableObject.transform.position, 0.25f).SetEase(Ease.InOutSine);
     }
     IEnumerator SmoothMove(GameObject prefab, Vector3 endPos, float time)
     {
