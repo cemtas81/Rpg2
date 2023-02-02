@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.SceneManagement;
-
+using Unity.Entities;
 
 public class MySolidSpawner : MonoBehaviour
 {
@@ -104,8 +104,22 @@ public class MySolidSpawner : MonoBehaviour
         prefabToSpawn.transform.SetPositionAndRotation(pos, Quaternion.identity);
         // Enable the prefab
         prefabToSpawn.SetActive(true);
+        StartCoroutine(SmoothMove(prefabToSpawn, movableObject.transform.position, 0.25f));
         // Add the prefab to the list of spawned prefabs
         //spawnedPrefabs.Add(prefabToSpawn);
+    }
+    IEnumerator SmoothMove(GameObject prefab, Vector3 endPos, float time)
+    {
+        float elapsedTime = 0;
+        Vector3 startPos = prefab.transform.position;
+
+        while (elapsedTime < time)
+        {
+            prefab.transform.position = Vector3.Lerp(startPos, endPos, elapsedTime / time);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        prefab.transform.position = endPos;
     }
 }
 
