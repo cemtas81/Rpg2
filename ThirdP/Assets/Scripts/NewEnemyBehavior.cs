@@ -3,6 +3,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEngine.GridBrushBase;
 
 public class NewEnemyBehavior : MonoBehaviour
 {
@@ -33,10 +34,13 @@ public class NewEnemyBehavior : MonoBehaviour
             {
                 animator = agent.Key.GetComponentInChildren<Animator>();
             }
-            if ((player.transform.position - agent.Key.transform.position).magnitude < agent.Key.stoppingDistance && !myPlayer.invisible&&animator is AnimatedMesh)
+            if ((player.transform.position - agent.Key.transform.position).magnitude <= agent.Key.stoppingDistance && !myPlayer.invisible&&animator is AnimatedMesh)
             {
-                agent.Key.transform.LookAt(new Vector3(target.x, agent.Key.transform.position.y, target.z));
-                agent.Key.enabled = false;
+                //agent.Key.transform.LookAt(new Vector3(target.x, agent.Key.transform.position.y, target.z));
+                agent.Key.transform.rotation = Quaternion.Slerp(agent.Key.transform.rotation, Quaternion.LookRotation
+                (new Vector3(target.x,agent.Key.transform.position.y,target.z) - agent.Key.transform.position), Time.deltaTime);
+ 
+                 agent.Key.enabled = false;
                 agent.Value.enabled = true;
                 //agent.Key.GetComponentInChildren<AnimatedMesh>().Play("Mutant Breathing Idle");
                 agent.Key.GetComponentInChildren<AnimatedMesh>().Play("mixamo.com");
@@ -59,30 +63,32 @@ public class NewEnemyBehavior : MonoBehaviour
                         //agent.Key.updatePosition = true;
                         agent.Key.destination = target;
                     }
-                    if (agent.Key.velocity.sqrMagnitude >= .01f)
+                    if (agent.Key.velocity.magnitude >= .01f)
                     {
-                        if (animator is Animator)
+                        if (animator is Animator animatorAnim)
                         {
-                            Animator animatorAnim = (Animator)animator;
                             animatorAnim.SetBool("Grounded", true);
-                            animatorAnim.SetFloat("Speed", agent.Key.velocity.sqrMagnitude);
+                            animatorAnim.SetFloat("Speed", agent.Key.velocity.magnitude);
                             animatorAnim.SetFloat("MotionSpeed", 1);
                         }
-                        else if (animator is AnimatedMesh)
+                        else if (animator is AnimatedMesh animatorMesh)
                         {
-                            AnimatedMesh animatorMesh = (AnimatedMesh)animator;
                             animatorMesh.Play("Mutant Run");
 
                         }
                     }
-                    if (Vector3.Distance(agent.Key.transform.position, player.transform.position) <= 2.2 && animator is Animator && !myPlayer.invisible)
+                    if (Vector3.Distance(agent.Key.transform.position, player.transform.position) <= 2.2 && animator is Animator animator1 && !myPlayer.invisible)
                     {
-                        Animator animatorAnim = (Animator)animator;
+                        Animator animatorAnim = animator1;
                         animatorAnim.SetFloat("Speed", 0);
                         animatorAnim.SetTrigger("Attack");
                         animatorAnim.SetFloat("MotionSpeed", 0);
                         agent.Key.isStopped = true;
                         agent.Key.velocity = Vector3.zero;
+                    }
+                    else if(Vector3.Distance(agent.Key.transform.position, player.transform.position) > 2.2 && animator is Animator && !myPlayer.invisible)
+                    {
+                        agent.Key.isStopped = false;
                     }
                     if (myPlayer.dead)
                     {

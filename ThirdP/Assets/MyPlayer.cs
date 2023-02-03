@@ -53,6 +53,7 @@ public class MyPlayer : MonoBehaviour
     public GameObject boomer;
     private bool canBoomerang;
     public float weapon;
+    public GameObject harita;
     private void Start()
     {
         targetMover=Camera.main.GetComponent<TargetMover>();
@@ -106,6 +107,10 @@ public class MyPlayer : MonoBehaviour
             if (Input.GetMouseButtonDown(1))
             {
                 Spell2();
+            } 
+            if (Input.GetKeyDown(KeyCode.CapsLock))
+            {
+                harita.SetActive(!harita.activeSelf);
             }
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {

@@ -37,9 +37,11 @@ public class EnemyController : MonoBehaviour, IKillable {
 		enemyMovement.Rotation(direction);
 		enemyAnimation.Movement(direction.magnitude);
 
-		if (distance > 15) {
-			Rolling();
-		} else if (distance > 2.5f) {
+		//if (distance > 15) 
+		//{
+		//	Rolling();
+		//}
+		if (distance > 2.5f) {
 			// get the final position, that is, 
 			// the distance between the enemy and the player
 			direction = player.transform.position - transform.position;

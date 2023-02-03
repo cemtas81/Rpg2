@@ -147,11 +147,13 @@ public class EnemyAdd2 : MonoBehaviour
     }
     IEnumerator Dying()
     {
-        yield return new WaitForSeconds(2.6f);
+        yield return new WaitForSeconds(1.2f);
+        Parent.Spawn3(transform.position);
+        yield return new WaitForSeconds(1.4f);
         //Parent.ReturnToPool(this.gameObject);
         this.gameObject.SetActive(false);
         Parent.spawnedPrefabs.Remove(this.gameObject);
-        Parent.Spawn3(transform.position);
+        
     }
     void DamageN(float value, string st)
     {

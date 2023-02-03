@@ -101,27 +101,45 @@ public class MySolidSpawner : MonoBehaviour
         GameObject prefab ;
         prefab = prefabs[3];
         GameObject prefabToSpawn = objectPool.GetPooledObject(prefab);
-        prefabToSpawn.transform.SetPositionAndRotation(pos, Quaternion.identity);
+        prefabToSpawn.transform.SetPositionAndRotation(new Vector3(pos.x,2,pos.z), Quaternion.identity);
         // Enable the prefab
         prefabToSpawn.SetActive(true);
-        //StartCoroutine(SmoothMove(prefabToSpawn, movableObject.transform.position, 0.25f));
+       
         // Add the prefab to the list of spawned prefabs
         //spawnedPrefabs.Add(prefabToSpawn);
-        prefabToSpawn.transform.DOMove(movableObject.transform.position, 0.25f).SetEase(Ease.InOutSine);
+        prefabToSpawn.transform.DOMove(movableObject.transform.position, 0.25f).SetEase(Ease.InOutBounce);
     }
-    IEnumerator SmoothMove(GameObject prefab, Vector3 endPos, float time)
-    {
-        float elapsedTime = 0;
-        Vector3 startPos = prefab.transform.position;
+    //public void Spawn4()
+    //{
+    //    GameObject prefab;
+    //    float randomValue = Random.value;
+    //    if (randomValue <= 0.75f)
+    //    {
+    //        prefab = prefabs[0];  // the first prefab has a higher chance of spawning 
+    //    }
+    //    else if (randomValue <= 0.95f)
+    //    {
+    //        prefab = prefabs[1];  // the second prefab has a lower chance of spawning
+    //    }
+    //    else
+    //    {
+    //        prefab = prefabs[2];  // the third prefab has an even lower chance of spawning
+    //    }
 
-        while (elapsedTime < time)
-        {
-            prefab.transform.position = Vector3.Lerp(startPos, endPos, elapsedTime / time);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-        prefab.transform.position = endPos;
-    }
+    //    if (spawnedPrefabs.Count >= maxActivePrefabs)
+    //    {
+    //        return;
+    //    }
+    //    float angle = Random.Range(0f, 360f);
+    //    float x = movableObject.transform.position.x + desiredCircleRadius * Mathf.Cos(angle);
+    //    float y = movableObject.transform.position.y;
+    //    float z = movableObject.transform.position.z + desiredCircleRadius * Mathf.Sin(angle);
+    //    Vector3 position = new(x, y, z);
+    //    prefab.transform.SetPositionAndRotation(position, Quaternion.identity);
+    //    Instantiate(prefab);
+    //    spawnedPrefabs.Add(prefab);
+    //}
+  
 }
 
 
