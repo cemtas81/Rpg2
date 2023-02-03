@@ -22,8 +22,8 @@ public class ScreenController : MonoBehaviour {
 
 		maxScore = PlayerPrefs.GetFloat("MaxScore");
 
-		healthSlider.maxValue = playerController.playerStatus.health;
-		UpdateHealthSlider();
+		//healthSlider.maxValue = playerController.playerStatus.health;
+		//UpdateHealthSlider();
 		Time.timeScale = 1;
 	}
 

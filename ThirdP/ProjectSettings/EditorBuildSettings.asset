@@ -11,6 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Scene_3.unity
     guid: 1093bafd75d7efe44afa4144939483ef
+  - enabled: 0
+    path: Assets/ScenesZombie/Game.unity
+    guid: 211eebb6f9f3fee4ab8f2d0e8e76256c
+  - enabled: 0
+    path: Assets/ScenesZombie/Menu.unity
+    guid: b739a3a1bded1fb41bc1c79090d20877
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 5c8bf05bd034b984badfb5cdc8a595bf,
       type: 2}
