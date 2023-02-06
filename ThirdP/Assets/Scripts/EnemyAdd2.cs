@@ -22,7 +22,7 @@ public class EnemyAdd2 : MonoBehaviour
     [SerializeField]
     private ParticleSystem blood;
     public DamageNumber numberPrefab;    
-    public MySolidSpawner Parent;
+    private MySolidSpawner Parent;
     private int currentHealth;
     public int SwordDamage=25;
   
