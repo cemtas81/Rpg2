@@ -88,7 +88,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8991649977978731444}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 29.999866, y: 0.06999993, z: 0.08981262}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -144,7 +144,6 @@ MonoBehaviour:
   blood: {fileID: 855441934345333500}
   numberPrefab: {fileID: 1584410138532935668, guid: 9b47337e9c5c2764b8a736615e6cce55,
     type: 3}
-  Parent: {fileID: 0}
   SwordDamage: 100
 --- !u!195 &4149390144648818183
 NavMeshAgent:
