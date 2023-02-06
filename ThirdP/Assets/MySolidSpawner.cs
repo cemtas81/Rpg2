@@ -107,7 +107,18 @@ public class MySolidSpawner : MonoBehaviour
        
         // Add the prefab to the list of spawned prefabs
         //spawnedPrefabs.Add(prefabToSpawn);
-        prefabToSpawn.transform.DOMove(movableObject.transform.position, 0.25f).SetEase(Ease.InOutBounce);
+        //prefabToSpawn.transform.DOMove(movableObject.transform.position, 0.25f).SetEase(Ease.OutQuad);
+
+       Vector3 startPos = prefabToSpawn.transform.position;      
+       int height = 5;
+       float duration = 0.25f;
+        DOTween.To(() => 0, x =>
+        {
+            float y = height * (x / duration - (x / duration) * (x / duration));
+            prefabToSpawn.transform.position = startPos + (movableObject.transform.position - startPos) * x / duration + new Vector3(0, y, 0);
+        }, duration, duration)
+        .SetEase(Ease.Linear)
+        .Play();
     }
     //public void Spawn4()
     //{
