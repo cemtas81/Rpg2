@@ -45,10 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0ee1c17ac26f734f86c978c1975a617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agents: []
   player: {fileID: 0}
   myPlayer: {fileID: 0}
-  Parent: {fileID: 4575854486818459454}
+  destUpdateRate: 0.2
+  rotationSpeed: 720
 --- !u!114 &4575854486818459454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,14 +62,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabs:
+  - {fileID: 8991649977978731444, guid: ac894bc353274d545860afc612808cdb, type: 3}
   - {fileID: 8991649977978731444, guid: d66fe89ed07e7054385c087f0d621725, type: 3}
   - {fileID: 8991649977978731444, guid: fa4ab2cccb511324ca2792a67cf74da2, type: 3}
+  - {fileID: 6587295368435362768, guid: 360fe8d9c91bcb94490f90701f09ecfc, type: 3}
   desiredCircleRadius: 30
   minSpawnCount: 5
   maxSpawnCount: 10
-  maxActivePrefabs: 88
+  maxActivePrefabs: 100
   movableObject: {fileID: 0}
-  nadide: 0.8
+  nadide: 0.75
   spawnedPrefabs: []
-  spawnInterval: 1
+  spawnInterval: 3
   objectPool: {fileID: 0}
