@@ -161,7 +161,7 @@ MonoBehaviour:
   - {fileID: 125383973}
   Player: {fileID: 1683722358}
   UpdateRate: 1
-  MovementThreshold: 1
+  MovementThreshold: 0
   NavMeshSize: {x: 70, y: 20, z: 70}
   CacheSources: 0
 --- !u!114 &125383973
